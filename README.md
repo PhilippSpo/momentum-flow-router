@@ -24,14 +24,14 @@ FlowRouter.route('/main', {
 ```
 ### Setup markup
 In your flow-layout you wrap this momentum helper around your template region.
-```
+```html
 {{#momentum plugin='flow-router'}}
   {{> Template region='main'}}
 {{/momentum}}
 ```
 In order to get clean transitions without a scrollbar showing up you should also wrap each of your templates inside a fixed div. The package comes with a predefined css-class `.frt-fixed-content-wrapper` which basically is a fixed div with `top: 0; right: 0; left: 0; right: 0` that you need to adapt to fit your content. Normally it is enough to just adjust the `top` and `bottom` values but sometimes you might also need to redefine the width of the fixed div, which can be a bit tricky. The trick here is to set the `left` and `right` to `0` and then adjust the `margin-left`/`margin-right`.  
 So this should get you started with a fixed div, which you can then adjust to your needs:
-```
+```html
 <template name="contentWrapper">
   <div class="frt-fixed-content-wrapper">
     {{> UI.contentBlock}}
@@ -39,7 +39,7 @@ So this should get you started with a fixed div, which you can then adjust to yo
 </template>
 ```
 And now you can wrap your templates inside this `contentWrapper` like so:
-```
+```html
 <template name="main">
   {{#contentWrapper}}
     <div>
