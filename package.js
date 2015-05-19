@@ -11,7 +11,7 @@ Package.on_use(function (api, where) {
 	api.use(['tracker',
 			'underscore',
 			'meteorhacks:flow-router@1.7.0',
-			'percolate:momentum@0.6.0'
+			'percolate:momentum@0.7.2'
 		],
 		'client');
 
