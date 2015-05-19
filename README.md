@@ -52,7 +52,7 @@ And now you can wrap your templates inside the `contentWrapper` like so:
 </template>
 ```
 ### Define transitions
-Call the `Transitioner.setTransitions` method and give it your transition configuration. The pattern for the key is `fromRouteName->toRouteName` and the value is a momentum transition (see the [momentum]((https://github.com/percolatestudio/meteor-momentum) package for more options for predefined transitions)
+Call the `Transitioner.setTransitions` method and give it your transition configuration. The pattern for the key is `fromRouteName->toRouteName` and the value is a momentum transition (see the [momentum](https://github.com/percolatestudio/meteor-momentum) package for more options for predefined transitions)
 ```javascript
 Transitioner.setTransitions({
   'main->left': 'left-to-right',
