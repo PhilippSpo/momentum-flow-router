@@ -23,13 +23,13 @@ FlowRouter.route('/main', {
 });
 ```
 ### Setup markup
-In your flow-layout you wrap this momentum helper around your template region.
+In your flow-layout you wrap the momentum helper around your template region.
 ```html
 {{#momentum plugin='flow-router'}}
   {{> Template region='main'}}
 {{/momentum}}
 ```
-In order to get clean transitions without a scrollbar showing up you should also wrap each of your templates inside a fixed div. The package comes with a predefined css-class `.frt-fixed-content-wrapper` which basically is a fixed div with `top: 0; right: 0; left: 0; right: 0` that you need to adapt to fit your content. Normally it is enough to just adjust the `top` and `bottom` values but sometimes you might also need to redefine the width of the fixed div, which can be a bit tricky. The trick here is to set the `left` and `right` to `0` and then adjust the `margin-left`/`margin-right`.  
+In order to get clean transitions without a scrollbar showing up you should also wrap each of your templates inside a fixed div. The package comes with a predefined css-class `.frt-fixed-content-wrapper`, which basically is a fixed div with `top: 0; right: 0; left: 0; right: 0` that you need to adapt to fit your content. Normally it is enough to just adjust the `top` and `bottom` values, but sometimes you might also need to redefine the width of the fixed div, which can be a bit tricky. The trick here is to set the `left` and `right` to `0` and then adjust the `margin-left`/`margin-right` (without having a fixed width or width 100%).  
 So this should get you started with a fixed div, which you can then adjust to your needs:
 ```html
 <template name="contentWrapper">
@@ -38,7 +38,7 @@ So this should get you started with a fixed div, which you can then adjust to yo
   </div>
 </template>
 ```
-And now you can wrap your templates inside this `contentWrapper` like so:
+And now you can wrap your templates inside the `contentWrapper` like so:
 ```html
 <template name="main">
   {{#contentWrapper}}
@@ -52,7 +52,7 @@ And now you can wrap your templates inside this `contentWrapper` like so:
 </template>
 ```
 ### Define transitions
-Call the `Transitioner.setTransitions` method and give it your transition configuration. The pattern for the key is `routeName->routeName` and the value is a momentum transition (see the [momentum]((https://github.com/percolatestudio/meteor-momentum) package for more options for predefined transitions)
+Call the `Transitioner.setTransitions` method and give it your transition configuration. The pattern for the key is `fromRouteName->toRouteName` and the value is a momentum transition (see the [momentum]((https://github.com/percolatestudio/meteor-momentum) package for more options for predefined transitions)
 ```javascript
 Transitioner.setTransitions({
   'main->left': 'left-to-right',
