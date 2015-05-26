@@ -9,7 +9,7 @@ Transitioner = {
     // tried to work around using tracker, but this seems to be the best fit
     // the reason is, that you need this function to update on the inital route
     Tracker.autorun(function () {
-      var route = FlowRouter._routeName.get();
+      var route = FlowRouter.getRouteName();
       // set transition
       var from = self.current,
         to = route;
