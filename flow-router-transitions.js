@@ -6,23 +6,26 @@ Transitioner = {
   current: '',
   updateRoutesTransitions: function () {
     var self = this;
-    // tried to work around using tracker, but this seems to be the best fit
-    // the reason is, that you need this function to update on the inital route
-    Tracker.autorun(function () {
-      var route = FlowRouter.getRouteName();
-      // set transition
-      var from = self.current,
-        to = route;
+    // no reactive computation anymore here
+    // this function gets called once the route changes (flow router triggred)
+    //  and once mometum asks for a transition type
+    var route = FlowRouter.getRouteName();
+    // set transition
+    var from = self.current,
+      to = route;
 
-      // set new current route
-      self.current = route;
+    if (from === to) {
+      return;
+    }
 
-      if (self.transitions.hasOwnProperty(from + '->' + to)) {
-        self.transition = self.transitions[from + '->' + to];
-      } else {
-        self.transition = self.transitions['default'];
-      }
-    });
+    // set new current route
+    self.current = route;
+
+    if (self.transitions.hasOwnProperty(from + '->' + to)) {
+      self.transition = self.transitions[from + '->' + to];
+    } else {
+      self.transition = self.transitions['default'];
+    }
   },
   getRouteForName: function (name) {
     return _.findWhere(FlowRouter._routes, {
@@ -39,12 +42,17 @@ Transitioner = {
     self.transitions = transitions;
   }
 };
-Transitioner.updateRoutesTransitions();
+// update transitions once flow router triggers route change
+Tracker.autorun(function () {
+  Transitioner.updateRoutesTransitions();
+});
 
 Momentum.registerPlugin('flow-router', function (options) {
   check(options.options, Match.Optional(Function));
 
   var getPluginOptions = function () {
+    // trigger transition update manually
+    Transitioner.updateRoutesTransitions();
     var type = Transitioner.transition;
 
     if (_.isUndefined(type)) {
