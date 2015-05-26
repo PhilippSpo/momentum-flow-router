@@ -1,7 +1,7 @@
 Package.describe({
 	name: "philippspo:momentum-flow-router",
 	summary: "A momentum plugin for transitioning Flow Router pages",
-	version: "0.0.3",
+	version: "0.0.4",
 	git: "https://github.com/philippspo/momentum-flow-router.git"
 });
 
