@@ -7,6 +7,8 @@ Live Demo [here](http://flow-router-transitions.meteor.com/)
 
 Live Demo Code [here](https://github.com/PhilippSpo/flow-router-transitions-demo)
 
+Meteor Pad Playground [here](http://meteorpad.com/pad/Z9QpXZYQNASDTkGzF/momentum-flow-router)
+
 ## Getting started:
 
 ### Setup routes (with names)
