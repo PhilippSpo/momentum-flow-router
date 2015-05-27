@@ -24,6 +24,8 @@ FlowRouter.route('/main', {
 	}
 });
 ```
+At the moment this package/momentum does not support doing animations when swtiching bewteen different layouts. (But maybe there will be a way in the near future :) )  
+
 ### Setup markup
 In your flow-layout you wrap the momentum helper around your template region.
 ```html
@@ -31,6 +33,7 @@ In your flow-layout you wrap the momentum helper around your template region.
   {{> Template.dynamic template=main}}
 {{/momentum}}
 ```
+Something to note here, is that the momentum tags must directly wrap the dynamic template.  
 In order to get clean transitions without a scrollbar showing up you should also wrap each of your templates inside a fixed div. The package comes with a predefined css-class `.frt-fixed-content-wrapper`, which basically is a fixed div with `top: 0; right: 0; left: 0; right: 0` that you need to adapt to fit your content. Normally it is enough to just adjust the `top` and `bottom` values, but sometimes you might also need to redefine the width of the fixed div, which can be a bit tricky. The trick here is to set the `left` and `right` to `0` and then adjust the `margin-left`/`margin-right` (without having a fixed width or width 100%).  
 So this should get you started with a fixed div, which you can then adjust to your needs:
 ```html
