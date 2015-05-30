@@ -1,2 +1,2 @@
 Template.customRootLayout.replaces("flowLayoutRoot");
-FlowLayout.setRoot('#momentum');
+FlowLayout.setRoot('[data-momentum]');
