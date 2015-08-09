@@ -44,7 +44,7 @@ Transitioner = {
 };
 // update transitions once flow router triggers route change
 Tracker.autorun(function () {
-  Transitioner.updateRoutesTransitions();
+  // Transitioner.updateRoutesTransitions();
 });
 
 Momentum.registerPlugin('flow-router', function (options) {

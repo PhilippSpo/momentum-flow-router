@@ -11,8 +11,8 @@ Package.on_use(function (api, where) {
 	api.use(['tracker',
 			'underscore',
 			'templating',
-			'meteorhacks:flow-router@1.9.0',
-			'meteorhacks:flow-layout@1.3.0',
+			'kadira:flow-router',
+			'kadira:blaze-layout',
 			'percolate:momentum@0.7.2',
 			'aldeed:template-extension@3.4.3'
 		],
