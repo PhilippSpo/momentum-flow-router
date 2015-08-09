@@ -19,7 +19,6 @@ Package.on_use(function (api, where) {
 		'client');
 
 	api.add_files('flow-router-transitions.js', ['client']);
-	api.add_files(['customRootLayout.html', 'customRootLayout.js'], ['client']);
 	api.add_files('style.css', ['client']);
 
 	api.export('Transitioner');
