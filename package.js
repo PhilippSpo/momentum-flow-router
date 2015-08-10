@@ -11,8 +11,8 @@ Package.on_use(function (api, where) {
 	api.use(['tracker',
 			'underscore',
 			'templating',
-			'kadira:flow-router',
-			'kadira:blaze-layout',
+			'kadira:flow-router@2.1.1',
+			'kadira:blaze-layout@2.0.0',
 			'percolate:momentum@0.7.2',
 			'aldeed:template-extension@3.4.3'
 		],
