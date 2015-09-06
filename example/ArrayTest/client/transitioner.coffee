@@ -1,42 +1,44 @@
-@CreateTransitions = (Transitions, LastPage, Page) ->
+# Creates the actual strings inside the object
+CreateTransitions = (Transitions, LastPage, Page) ->
+  console.log 'From: ' + LastPage + ' to ' + Page
+
   # Create object for direction of motion
   ForwardPageKey = LastPage + '->' + Page
   Transitions[ForwardPageKey] = 'right-to-left'
   # Then create the same concept in reverse
   ReversePageKey = Page + '->' + LastPage
   Transitions[ReversePageKey] = 'left-to-right'
+  Transitions
 
-@TransitionOrder = (Pages) ->
+# Creates an object matching the desired output
+TransitionOrder = (Pages) ->
   # init vars
   Transitions = {}
   LastPage = ''
-  # Loop through array of named flow routes
-  _.each Pages, (Page) ->
-    unless LastPage is ''
-      # console.log Page
-      CreateTransitions(Transitions, LastPage, Page)
-    # Store last page, to compare against
-    LastPage = Page
-    console.log LastPage
+  NumPages = Pages.length
+  PageIndex = 0
+
+  # Loop through string function and update Transitions object
+  while PageIndex < Pages.length
+    LastIndex = 0
+    while LastIndex < PageIndex
+      # unless LastIndex is -1
+      Transitions = CreateTransitions(Transitions, Pages[LastIndex], Pages[PageIndex])
+      LastIndex++
+    PageIndex++
 
   # Set default value to fade
   Transitions['default'] = 'fade'
-  # console.log Transitions
-
+  console.log Transitions
   # Return transitions to Transitioner.setTransitions
   Transitions
 
-# Old demo of variable
+# Desired Output:
 # window.Transitions = {
-#   'AdminCompilation->ManageMechanicNotes_Form': 'right-to-left'
-#   'ManageMechanicNotes_Form->AdminCompilation': 'left-to-right'
+#   '1->2': 'right-to-left'
+#   '2->1': 'left-to-right'
 #   'default': 'fade'
 # }
 
-# Order from left to right and the above function will spit out necessary object
-Transitioner.setTransitions TransitionOrder [
-  '1'
-  '2'
-  '3'
-  '4'
-]
+# Order of pages from left to right
+Transitioner.setTransitions TransitionOrder [ '1', '2', '3', '4']
