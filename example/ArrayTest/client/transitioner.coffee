@@ -1,22 +1,23 @@
+@CreateTransitions = (Transitions, LastPage, Page) ->
+  # Create object for direction of motion
+  ForwardPageKey = LastPage + '->' + Page
+  Transitions[ForwardPageKey] = 'right-to-left'
+  # Then create the same concept in reverse
+  ReversePageKey = Page + '->' + LastPage
+  Transitions[ReversePageKey] = 'left-to-right'
+
 @TransitionOrder = (Pages) ->
   # init vars
   Transitions = {}
   LastPage = ''
   # Loop through array of named flow routes
   _.each Pages, (Page) ->
-    if LastPage != ''
+    unless LastPage is ''
       # console.log Page
-
-      # Create object for one direction of motion
-      ForwardPageKey = LastPage + '->' + Page
-      Transitions[ForwardPageKey] = 'right-to-left'
-      # Then create the same concept in reverse
-      ReversePageKey = Page + '->' + LastPage
-      Transitions[ReversePageKey] = 'left-to-right'
-
+      CreateTransitions(Transitions, LastPage, Page)
     # Store last page, to compare against
     LastPage = Page
-    # console.log LastPage
+    console.log LastPage
 
   # Set default value to fade
   Transitions['default'] = 'fade'
