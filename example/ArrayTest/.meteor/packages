@@ -5,5 +5,23 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
-insecure
+# autopublish
+# insecure
+
+meteortoys:allthings # Pres ctrl-m to activate
+
+#### Libraries and Preprocessors ####
+stolinski:stylus-multi # with postCSS support! but somewhat outdated elsewhere
+kyleking:customizable-bootstrap-stylus
+fortawesome:fontawesome
+coffeescript
+mquandalle:jade
+
+### Routing ###
+kadira:flow-router
+kadira:blaze-layout # for page Rendering
+zimme:active-route # for isActiveRoute
+arillo:flow-router-helpers # for pathFor
+
+# For testing:
+philippspo:momentum-flow-router # page-transitions

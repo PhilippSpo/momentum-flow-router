@@ -1,0 +1,18 @@
+template(name='NavTop')
+  nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse.navbar-shrink.shrunk(role='navigation')
+    .container
+      ul.nav.navbar-nav.navbar-right
+        li(class="{{ isActiveRoute regex='0' }}")
+          a(href="{{ pathFor '0' }}") 0
+        li(class="{{ isActiveRoute regex='1' }}")
+          a(href="{{ pathFor '1' }}") 1
+        li(class="{{ isActiveRoute regex='2' }}")
+          a(href="{{ pathFor '2' }}") 2
+        li(class="{{ isActiveRoute regex='3' }}")
+          a(href="{{ pathFor '3' }}") 3
+        li(class="{{ isActiveRoute regex='4' }}")
+          a(href="{{ pathFor '4' }}") 4
+        li(class="{{ isActiveRoute regex='5' }}")
+          a(href="{{ pathFor '5' }}") 5
+        li(class="{{ isActiveRoute regex='6' }}")
+          a(href="{{ pathFor '6' }}") 6
