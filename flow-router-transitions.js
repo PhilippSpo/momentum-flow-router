@@ -1,6 +1,36 @@
 /* global Momentum: true */
 /* global Transitioner: true */
 
+function CreateTransitions(Transitions, LastPage, Page) {
+  var ForwardPageKey, ReversePageKey;
+  console.log('From: ' + LastPage + ' to ' + Page);
+  ForwardPageKey = LastPage + '->' + Page;
+  Transitions[ForwardPageKey] = 'right-to-left';
+  ReversePageKey = Page + '->' + LastPage;
+  Transitions[ReversePageKey] = 'left-to-right';
+  return Transitions;
+};
+
+// function TransitionOrder(Pages) {
+//   console.log('Running TransitionOrder from Package');
+//   var LastIndex, LastPage, NumPages, PageIndex, Transitions;
+//   Transitions = {};
+//   LastPage = '';
+//   NumPages = Pages.length;
+//   PageIndex = 0;
+//   while (PageIndex < Pages.length) {
+//     LastIndex = 0;
+//     while (LastIndex < PageIndex) {
+//       Transitions = CreateTransitions(Transitions, Pages[LastIndex], Pages[PageIndex]);
+//       LastIndex++;
+//     }
+//     PageIndex++;
+//   }
+//   Transitions['default'] = 'fade';
+//   console.log(Transitions);
+//   return Transitions;
+// };
+
 Transitioner = {
     transitions: [],
     current: '',
@@ -40,6 +70,26 @@ Transitioner = {
     setTransitions: function (transitions) {
         var self = this;
         self.transitions = transitions;
+    },
+    TransitionOrder: function (Pages) {
+      console.log('Running TransitionOrder from Package');
+      var LastIndex, LastPage, NumPages, PageIndex, Transitions;
+      Transitions = {};
+      LastPage = '';
+      NumPages = Pages.length;
+      PageIndex = 0;
+      while (PageIndex < Pages.length) {
+        LastIndex = 0;
+        while (LastIndex < PageIndex) {
+          Transitions = CreateTransitions(Transitions, Pages[LastIndex], Pages[PageIndex]);
+          LastIndex++;
+        }
+        PageIndex++;
+      }
+      Transitions['default'] = 'fade';
+      console.log(Transitions);
+      // return Transitions;
+      Transitioner.setTransitions(Transitions);
     }
 };
 // update transitions once flow router triggers route change
