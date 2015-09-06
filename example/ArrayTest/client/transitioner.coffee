@@ -41,4 +41,5 @@ TransitionOrder = (Pages) ->
 # }
 
 # Order of pages from left to right
-Transitioner.setTransitions TransitionOrder [ '1', '2', '3', '4']
+NamedRoutes = [ '0', '1', '2', '3', '4', '5', '6']
+Transitioner.setTransitions TransitionOrder NamedRoutes
