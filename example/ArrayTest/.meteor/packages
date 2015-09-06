@@ -20,6 +20,7 @@ mquandalle:jade
 ### Routing ###
 kadira:flow-router
 kadira:blaze-layout # for page Rendering
+zimme:active-route # for isActiveRoute
 arillo:flow-router-helpers # for pathFor
 
 # For testing:
