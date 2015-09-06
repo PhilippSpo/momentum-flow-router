@@ -1,6 +1,7 @@
 template(name='Universal_Layout')
-	+NavTop
-	.navSpacing
-	.container
+	header
+		+momentum(plugin='flow-router')
+			+NavTop
+	.container.navSpacing
 		+momentum(plugin='flow-router')
 			+Template.dynamic template=body

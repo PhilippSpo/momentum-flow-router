@@ -1,35 +1,16 @@
 /* global Momentum: true */
 /* global Transitioner: true */
 
+// Additional function to support Transitioner.TransitionOrder
 function CreateTransitions(Transitions, LastPage, Page) {
-  var ForwardPageKey, ReversePageKey;
-  console.log('From: ' + LastPage + ' to ' + Page);
-  ForwardPageKey = LastPage + '->' + Page;
+  // Create forward and reverse transition based on args
+  // console.log('From: ' + LastPage + ' to ' + Page);
+  var ForwardPageKey = LastPage + '->' + Page;
   Transitions[ForwardPageKey] = 'right-to-left';
-  ReversePageKey = Page + '->' + LastPage;
+  var ReversePageKey = Page + '->' + LastPage;
   Transitions[ReversePageKey] = 'left-to-right';
   return Transitions;
 };
-
-// function TransitionOrder(Pages) {
-//   console.log('Running TransitionOrder from Package');
-//   var LastIndex, LastPage, NumPages, PageIndex, Transitions;
-//   Transitions = {};
-//   LastPage = '';
-//   NumPages = Pages.length;
-//   PageIndex = 0;
-//   while (PageIndex < Pages.length) {
-//     LastIndex = 0;
-//     while (LastIndex < PageIndex) {
-//       Transitions = CreateTransitions(Transitions, Pages[LastIndex], Pages[PageIndex]);
-//       LastIndex++;
-//     }
-//     PageIndex++;
-//   }
-//   Transitions['default'] = 'fade';
-//   console.log(Transitions);
-//   return Transitions;
-// };
 
 Transitioner = {
     transitions: [],
@@ -72,23 +53,23 @@ Transitioner = {
         self.transitions = transitions;
     },
     TransitionOrder: function (Pages) {
-      console.log('Running TransitionOrder from Package');
-      var LastIndex, LastPage, NumPages, PageIndex, Transitions;
-      Transitions = {};
-      LastPage = '';
-      NumPages = Pages.length;
-      PageIndex = 0;
+      // Init Vars
+      var Transitions = {};
+      var LastPage = '';
+      var NumPages = Pages.length;
+      var PageIndex = 0;
+      // Loop through array of named routes
       while (PageIndex < Pages.length) {
-        LastIndex = 0;
+        var LastIndex = 0;
         while (LastIndex < PageIndex) {
           Transitions = CreateTransitions(Transitions, Pages[LastIndex], Pages[PageIndex]);
           LastIndex++;
         }
         PageIndex++;
       }
+      // Set fallback transition
       Transitions['default'] = 'fade';
-      console.log(Transitions);
-      // return Transitions;
+      // Then resume normal process
       Transitioner.setTransitions(Transitions);
     }
 };

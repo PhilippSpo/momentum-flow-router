@@ -17,7 +17,7 @@
 #   sel++
 
 # Actual Routes
-FlowRouter.route '/0',
+FlowRouter.route '/',
   name: '0',
   action: ->
     BlazeLayout.render 'Universal_Layout', {
