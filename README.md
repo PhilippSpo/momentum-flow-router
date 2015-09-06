@@ -57,6 +57,7 @@ And now you can wrap your templates inside the `contentWrapper` like so:
 </template>
 ```
 ### Define transitions
+#### Option A: Manual Definition
 Call the `Transitioner.setTransitions` method and give it your transition configuration. The pattern for the key is `fromRouteName->toRouteName` and the value is a momentum transition (see the [momentum](https://github.com/percolatestudio/meteor-momentum) package for more options for predefined transitions)
 ```javascript
 Transitioner.setTransitions({
@@ -69,6 +70,29 @@ Transitioner.setTransitions({
   'default': 'fade'
 });
 ```
+
+#### Option B: Automated Definition
+Call the `Transitioner.TransitionOrder` method with an array of each named route. The snippet below is taken from the [example meteor app](https://github.com/PhilippSpo/momentum-flow-router/tree/master/example/ArrayTest) with the most basic route names.
+
+```javascript
+var NamedRoutes = ['0', '1', '2', '3', '4', '5', '6'];
+Transitioner.TransitionOrder(NamedRoutes);
+```
+
+Which is then compiled to:
+```javascript
+Transitioner.setTransitions({
+   "0->1": "right-to-left",
+   "0->2": "right-to-left",
+   "0->3": "right-to-left",
+   "0->4": "right-to-left",
+   "0->5": "right-to-left",
+   ...etc.
+   'default': 'fade'
+});
+// Note the default transition is fade
+```
+
 ## License
 
 MIT. (c) maintained by Philipp Sporrer (@philippspo).
