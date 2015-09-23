@@ -9,12 +9,11 @@ Package.on_use(function (api, where) {
 	api.versionsFrom('METEOR@0.9.2');
 
 	api.use(['tracker',
+			'check',
 			'underscore',
 			'templating',
 			'kadira:flow-router@2.1.1',
-			'kadira:blaze-layout@2.0.0',
-			'percolate:momentum@0.7.2',
-			'aldeed:template-extension@3.4.3'
+			'percolate:momentum@0.7.2'
 		],
 		'client');
 
