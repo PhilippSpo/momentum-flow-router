@@ -1,6 +1,17 @@
 /* global Momentum: true */
 /* global Transitioner: true */
 
+// Additional function to support Transitioner.TransitionOrder
+function CreateTransitions(Transitions, LastPage, Page) {
+  // Create forward and reverse transition based on args
+  // console.log('From: ' + LastPage + ' to ' + Page);
+  var ForwardPageKey = LastPage + '->' + Page;
+  Transitions[ForwardPageKey] = 'right-to-left';
+  var ReversePageKey = Page + '->' + LastPage;
+  Transitions[ReversePageKey] = 'left-to-right';
+  return Transitions;
+};
+
 Transitioner = {
     transitions: [],
     current: '',
@@ -40,6 +51,26 @@ Transitioner = {
     setTransitions: function (transitions) {
         var self = this;
         self.transitions = transitions;
+    },
+    TransitionOrder: function (Pages) {
+      // Init Vars
+      var Transitions = {};
+      var LastPage = '';
+      var NumPages = Pages.length;
+      var PageIndex = 0;
+      // Loop through array of named routes
+      while (PageIndex < Pages.length) {
+        var LastIndex = 0;
+        while (LastIndex < PageIndex) {
+          Transitions = CreateTransitions(Transitions, Pages[LastIndex], Pages[PageIndex]);
+          LastIndex++;
+        }
+        PageIndex++;
+      }
+      // Set fallback transition
+      Transitions['default'] = 'fade';
+      // Then resume normal process
+      Transitioner.setTransitions(Transitions);
     }
 };
 // update transitions once flow router triggers route change
