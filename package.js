@@ -20,5 +20,5 @@ Package.on_use(function (api, where) {
 	api.add_files('flow-router-transitions.js', ['client']);
 	api.add_files('style.css', ['client']);
 
-	api.export('Transitioner');
+	api.export(['Transitioner', 'Momentum']);
 });

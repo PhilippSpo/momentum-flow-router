@@ -93,6 +93,20 @@ Transitioner.setTransitions({
 // Note the default transition is fade
 ```
 
+### Custom transitions
+
+You can also define your own transitions with Momentum.
+
+```javascript
+Momentum.registerPlugin('transition-name', function(options) {
+  return {
+    insertElement: function(node, next) { ... },
+    removeElement: function(node) { ... }
+});
+```
+
+Examples can be found in the `plugins` folder of Momentum : https://github.com/percolatestudio/meteor-momentum/tree/master/plugins
+
 ## License
 
 MIT. (c) maintained by Philipp Sporrer (@philippspo).
