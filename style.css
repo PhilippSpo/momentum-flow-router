@@ -1,7 +1,11 @@
 .frt-fixed-content-wrapper {
-  	position: fixed;
-  	left: 0;
-  	right: 0;
-  	bottom: 0;
-  	top: 0;
+  position: static;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.fri-fixed-content-wrapper.velocity-animating {
+  position: fixed;
 }
